@@ -45,6 +45,13 @@ test('does not use the active workspace as authorization for an ambiguous prompt
   assert.equal(calls.length, 1)
 })
 
+test('stops when a named shared workspace is outside the current grant', async () => {
+  const { call, calls } = fixture({ workspaces: [second] })
+  const target = await discoverTarget(call, { workspace: 'Example Workspace' })
+  assert.equal(target.state, 'workspace_not_found')
+  assert.equal(calls.length, 1)
+})
+
 test('does not silently choose one of several accounts or a different requested handle', async () => {
   const { call } = fixture({ accounts: [account, { ...account, id: 'a2', handle: 'other' }] })
   assert.equal((await discoverTarget(call)).state, 'choose_account')

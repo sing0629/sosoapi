@@ -15,7 +15,7 @@ Use this repo's AGENTS.md. Return the confirmed Threads link.
 
 The agent runs the public `sosoapi@0.5.25` CLI. It resolves your workspace and account, sends the post once, and follows the same Post ID until Threads confirms. If the destination is ambiguous, it asks which account to use before posting.
 
-On first use, complete SosoAPI sign-in and agent consent in your browser. If Threads isn't already connected to that workspace, also approve the connection on Meta. You can register during sign-in. With a ready connection and an explicit request to publish exact text, the agent can proceed without another SosoAPI confirmation. Your coding agent may separately ask for terminal permission.
+On first use, complete SosoAPI sign-in and agent consent in your browser. If Threads isn't already connected to that workspace, also approve the connection on Meta. You can register during sign-in. For a shared workspace, accept the owner's invitation before approving the agent's workspace access. With a ready connection and an explicit request to publish exact text, the agent can proceed without another SosoAPI confirmation. Your coding agent may separately ask for terminal permission.
 
 ## Check the install without signing in
 
