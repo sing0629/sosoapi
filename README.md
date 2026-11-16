@@ -1,6 +1,8 @@
 # SosoAPI
 
-Official SosoAPI CLI and MCP quickstart. Start by publishing a text post to Threads from your coding agent.
+Official SosoAPI CLI quickstart. Publish a text post to Threads from your coding agent.
+
+**[75.7% fewer total model tokens](#benchmark)** with the SosoAPI CLI in a live, same-model Threads publishing benchmark against Chrome.
 
 ## Publish to Threads from one prompt
 
@@ -25,10 +27,22 @@ npx -y sosoapi@0.5.25 posts --help
 
 The help should list `posts publish` and `posts status`. After signing in, run `node examples/threads-target.mjs` from this repo to check which Threads connection the CLI can use. This example displays account selection and readiness; it makes no publish call.
 
-For hosted MCP setup in Codex or Claude Code, see the [SosoAPI connection guide](https://sosoapi.ai/docs/quickstart). For direct terminal usage, see the [CLI reference](https://sosoapi.ai/docs/cli-reference).
+For more terminal commands, see the [SosoAPI CLI reference](https://sosoapi.ai/docs/cli-reference).
 
 ## Benchmark
 
-[Benchmark protocol](docs/benchmark.md) describes how to compare CLI and browser publishing under the same conditions. Cold onboarding and warm publishing are measured separately.
+On November 16, 2026, both agents used `gpt-6.1-sol` at `xhigh` to publish the same text to the same Threads account. Both started with working authorization and returned a verified Threads post link. The terminal run used `sosoapi@0.5.25`. The browser run used the native Threads composer in Chrome through a browser-control relay.
+
+| Measured result | SosoAPI CLI | Chrome |
+| --- | ---: | ---: |
+| Total model tokens | **93,975** | **387,385** |
+| Cached input tokens | 88,704 | 345,216 |
+| Uncached input tokens | 5,029 | 41,345 |
+| Output tokens | 242 | 824 |
+| Elapsed time per completed run | **49.44 s** | **156.72 s** |
+
+The CLI used **87.8% fewer uncached input tokens** in this pair. Total tokens include all input and output, including cached input.
+
+**Chrome's 156.72 seconds include 69.45 seconds waiting in the browser-control relay queue.** The timings describe this benchmark setup. See the [benchmark protocol](docs/benchmark.md) for the measurement method.
 
 If the quickstart helps you, star this repo. Report a reproducible issue through [GitHub Issues](https://github.com/vicky-ai-tech/sosoapi/issues) with the CLI version and a redacted error message.

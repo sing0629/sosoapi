@@ -17,4 +17,6 @@ For each arm capture:
 - Total tokens as input plus output. Uncached input as input minus cached input.
 - Provider confirmation and exact-text verification. Keep test post IDs, screenshots and raw logs private.
 
-Report the measurements with the cache condition and CLI version. This repository has no new live benchmark result yet.
+Report the measurements with the cache condition and CLI version.
+
+The [November 16 live result](../README.md#benchmark) records the completed same-model pair for `sosoapi@0.5.25`. Both sessions started with working authorization. The run captured final accumulated cache counts. Initial cache percentages were unavailable. Chrome's elapsed time includes the recorded browser-control relay queue.
